@@ -40,7 +40,7 @@ state = {                                                                       
 GPIO Related Functions
 """
 def init_led():
-    """Create and initialise an PWMLED Object"""
+    """Create and initialize an PWMLED Object"""
     global led
     led = PWMLED(LED_GPIO_PIN)
     led.value = state['level'] / 100                                                 # (7)
@@ -54,7 +54,7 @@ Flask & Flask-Restful Related Functions
 # Here we are serving a simple web page.
 @app.route('/', methods=['GET'])                                                     # (8)
 def index():
-    """Make sure inde.html is in the templates folder
+    """Make sure index.html is in the templates folder
     relative to this Python file."""
     return render_template('index_api_client.html', pin=LED_GPIO_PIN)                # (9)
 
@@ -67,8 +67,8 @@ class LEDControl(Resource):  # (10)
         self.args_parser = reqparse.RequestParser()                                  # (11)
 
         self.args_parser.add_argument(
-            name='level',  # Name of arguement
-            required=True,  # Mandatory arguement
+            name='level',  # Name of argument
+            required=True,  # Mandatory argument
             type=inputs.int_range(0, 100),  # Allowed range 0..100                   # (12)
             help='Set LED brightness level {error_msg}',
             default=None)
@@ -76,7 +76,7 @@ class LEDControl(Resource):  # (10)
 
     def get(self):
         """ Handles HTTP GET requests to return current LED state."""
-        return state  # (13)
+        return state                                                                 # (13)
 
 
     def post(self):
@@ -93,7 +93,7 @@ class LEDControl(Resource):  # (10)
         return state                                                                 # (18)
 
 
-# Initialise Module.
+# Initialize Module.
 init_led()
 # Register Flask-RESTful resource and mount to server end point /led
 api.add_resource(LEDControl, '/led')                                                 # (19)
@@ -102,7 +102,7 @@ api.add_resource(LEDControl, '/led')                                            
 if __name__ == '__main__':
 
     # If you have debug=True and receive the error "OSError: [Errno 8] Exec format error", then:
-    # remove the execuition bit on this file from a Terminal, ie:
+    # remove the execution bit on this file from a Terminal, ie:
     # chmod -x flask_api_server.py
     #
     # Flask GitHub Issue: https://github.com/pallets/flask/issues/3189

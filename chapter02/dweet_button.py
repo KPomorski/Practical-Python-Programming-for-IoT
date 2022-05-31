@@ -20,7 +20,7 @@ logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger('main')
 logger.setLevel(logging.INFO)
 
-# Initialise GPIOZero
+# Initialize GPIOZero
 Device.pin_factory = PiGPIOFactory()
 
 BUTTON_GPIO_PIN = 23
@@ -84,7 +84,7 @@ init_button()
 # Main entry point
 if __name__ == '__main__':
     # You could adopt the get_last_dweet() / process_dweet() from dweet_listner.py
-    # to initialise the led state in this file. For simplicity we're just
+    # to initialize the led state in this file. For simplicity we're just
     # starting with 'Off' (current_led_state = 0)
 
     print("Press button to send a dweet to turn LED on, blink or off.")

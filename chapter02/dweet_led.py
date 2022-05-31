@@ -41,7 +41,7 @@ Device.pin_factory = PiGPIOFactory()
 
 # Function Definitions
 def init_led():
-    """Create and initialise an LED Object"""
+    """Create and initialize an LED Object"""
     global led
     led = LED(LED_GPIO_PIN)
     led.off()
@@ -173,7 +173,7 @@ def signal_handler(sig, frame):
     sys.exit(0)
 
 
-# Initialise Module
+# initialize Module
 thing_name = resolve_thing_name(THING_NAME_FILE)
 init_led()
 
@@ -183,7 +183,7 @@ if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal_handler)  # Capture CTRL + C
     print_instructions()                                                           # (17)
 
-    # Initialise LED from last dweet.
+    # initialize LED from last dweet.
     last_dweet = get_latest_dweet()                                                # (18)
     if (last_dweet):
         process_dweet(last_dweet)

@@ -81,13 +81,13 @@ def on_connect(client, user_data, flags, connection_result_code):               
     """on_connect is called when our program connects to the MQTT Broker.
        Always subscribe to topics in an on_connect() callback.
        This way if a connection is lost, the automatic
-       re-connection will also results in the re-subscription occurring."""
+       re-connection will also result in the re-subscription occurring."""
 
     if connection_result_code == 0:                                                            # (8)
         # 0 = successful connection
         logger.info("Connected to MQTT Broker")
     else:
-        # connack_string() gives us a user friendly string for a connection code.
+        # connack_string() gives us a user-friendly string for a connection code.
         logger.error("Failed to connect to MQTT Broker: " + mqtt.connack_string(connection_result_code))
 
     # Subscribe to the topic for LED level changes.
@@ -156,7 +156,7 @@ def init_mqtt():
 
 
 
-# Initialise Module
+# Initialize Module
 init_led()
 init_mqtt()
 

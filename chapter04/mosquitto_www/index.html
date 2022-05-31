@@ -28,7 +28,7 @@
            reconnect: true
          });
 
-        // Callback when client looses it's connection to Broker.
+        // Callback when client loses its connection to Broker.
         client.onConnectionLost = function onConnectionLost(data) {                            // (8)
 
             if (data.errorCode !== 0) {

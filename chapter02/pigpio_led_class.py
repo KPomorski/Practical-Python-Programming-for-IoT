@@ -53,7 +53,7 @@ class PiGPIOLED:
         if background:
             # daemon=True prevents our thread below from preventing the main thread
             # (essentially the code in if __name__ == '__main__') from exiting naturally
-            # when it reaches it's end. If you try daemon=False you will discover that the
+            # when it reaches its end. If you try daemon=False you will discover that the
             # program never quits back to the Terminal and appears to hang after the LED turns off.
             thread = threading.Thread(name='LED on GPIO ' + str(self.gpio_pin),
                                             target=do_blink,

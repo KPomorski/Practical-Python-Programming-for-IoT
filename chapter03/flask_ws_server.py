@@ -41,7 +41,7 @@ state = {
 GPIO Related Functions
 """
 def init_led():
-    """Create and initialise PWMLED Object"""
+    """Create and initialize PWMLED Object"""
     global led
     led =  PWMLED(LED_GPIO_PIN)
     led.value = state['level'] / 100
@@ -66,7 +66,7 @@ def handle_connect():
     """Called when a remote web socket client connects to this server"""
     logger.info("Client {} connected.".format(request.sid))                          # (5)
 
-    # Send initialising data to newly connected client.
+    # Send initializing data to newly connected client.
     emit("led", state)                                                               # (6)
 
 
@@ -98,17 +98,17 @@ def handle_state(data):                                                         
 
         state['level'] = new_level
 
-    # Broadcast new state to *every* connected connected (so they remain in sync).
+    # Broadcast new state to *every* connected connection (so they remain in sync).
     emit("led", state, broadcast=True)                                               # (13)
 
 
-# Initialise Module
+# Initialize Module
 init_led()
 
 
 if __name__ == '__main__':
     # If you have debug=True and receive the error "OSError: [Errno 8] Exec format error", then:
-    # remove the execuition bit on this file from a Terminal, ie:
+    # remove the execution bit on this file from a Terminal, ie:
     # chmod -x flask_ws_server.py
     #
     # Flask GitHub Issue: https://github.com/pallets/flask/issues/3189
